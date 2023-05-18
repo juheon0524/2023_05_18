@@ -1,0 +1,2211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.0.0/css/all.min.css"/>
+    <link href="css/reset.css" rel="stylesheet">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.0.min.js"></script>
+
+    <script>
+        /*top_banner*/
+        $(function(){
+            $("#top_banner span").click(function(){
+                $("#top_banner").slideUp()
+                $("#top_banner").stop().hide()
+            })
+        });
+
+
+        /*mypage*/
+        $(function(){
+            $(".mypage").mouseover(function(){
+                $(".mypage img").attr("src","img/arrow_up.png")
+                $(".mypage_list").stop().slideDown();
+            }).mouseout(function(){
+                $(".mypage img").attr("src","img/arrow_down.png")
+                $(".mypage_list").stop().slideUp();
+            });
+        });
+
+        /*language*/
+        $(function(){
+            $(".language").mouseover(function(){
+                $(".language img").attr("src","img/arrow_up.png")
+                $(".language_list").stop().slideDown();
+            }).mouseout(function(){
+                $(".language img").attr("src","img/arrow_down.png")
+                $(".language_list").stop().slideUp();
+            });
+        });
+
+        /*category*/
+        $(function(){
+            $(".category_click").click(function(){
+                if($("#up1").css("display")=="none"){
+                    $("#up1").show();
+                    $("#down1").hide();
+                    $(".nav_slide").stop().slideDown();
+                }
+                else {
+                    $("#up1").hide();
+                    $("#down1").show();
+                    $(".nav_slide").stop().slideUp();
+                }
+            });
+            $(".nav_slide > span").click(function(){
+                $(".nav_slide").slideUp();
+                $("#up1").stop().hide();
+                $("#down1").stop().show();
+            });
+        });
+
+        /*slider*/
+        $(function(){
+            let i=0;
+            $(".nav2_wrap li").eq(i).css({borderTop:"3px solid red", margin:"-1px 0 0 0",padding:"20px 0 0 0"});
+
+            $(".nav2_wrap li").mouseenter(function(){
+                i=$(this).index()
+            });
+            
+            function slide(){
+                i++;
+                if(i > $(".main_slide:last").index()){
+                    i=0;
+                }
+                $(".main_slide").eq(i).stop().fadeIn("slow");
+                $(".main_slide").eq(i-1).stop().fadeOut("slow");
+
+                if(i==1){
+                    $(".nav2_wrap li").eq(i-1).css({color:"black", borderTop:"none"});
+                    $(".nav2_wrap li").eq(i).css({borderTop:"3px solid red", margin:"-1px 0 0 0",padding:"20px 0 0 0"})
+                } else if(i==2){
+                    $(".nav2_wrap li").eq(i-1).css({color:"black", borderTop:"none"});
+                    $(".nav2_wrap li").eq(i).css({borderTop:"3px solid red", margin:"-1px 0 0 0",padding:"20px 0 0 0"})                    
+                } else if(i==3){
+                    $(".nav2_wrap li").eq(i-1).css({color:"black", borderTop:"none",margin:"-1px 0 0 0"});
+                    $(".nav2_wrap li").eq(i).css({borderTop:"3px solid red", margin:"-1px 0 0 0",padding:"20px 0 0 0"})                    
+                } else if(i==4){
+                    $(".nav2_wrap li").eq(i-1).css({color:"black", borderTop:"none",margin:"-1px 0 0 0"});
+                    $(".nav2_wrap li").eq(i).css({borderTop:"3px solid red", margin:"-1px 0 0 0",padding:"20px 0 0 0"})                    
+                } else {
+                    $(".nav2_wrap li").eq(i-1).css({color:"black", borderTop:"none"});
+                    $(".nav2_wrap li").eq(i).css({borderTop:"3px solid red", margin:"-1px 0 0 0",padding:"20px 0 0 0"})                    
+                }
+            }
+
+            $(".nav2_wrap li").eq(0).mouseenter(function(){
+                var i=0;
+                $(".nav2_wrap li").css({borderTop:"none"});
+                $(this).css({borderTop:"3px solid red",margin:"-1px 0 0 0",padding:"20px 0 0 0"});
+                $(".main_slide").stop().hide();
+                $(".main_slide").eq(0).stop().show();
+            });
+
+            $(".nav2_wrap li").eq(1).mouseenter(function(){
+                var i=0;
+                $(".nav2_wrap li").css({borderTop:"none"});
+                $(this).css({borderTop:"3px solid red",margin:"-1px 0 0 0",padding:"20px 0 0 0"});
+                $(".main_slide").stop().hide();
+                $(".main_slide").eq(1).stop().show();
+            });
+            
+            $(".nav2_wrap li").eq(2).mouseenter(function(){
+                var i=0;
+                $(".nav2_wrap li").css({borderTop:"none"});
+                $(this).css({borderTop:"3px solid red",margin:"-1px 0 0 0",padding:"20px 0 0 0"});
+                $(".main_slide").stop().hide();
+                $(".main_slide").eq(2).stop().show();
+            });
+            
+            $(".nav2_wrap li").eq(3).mouseenter(function(){
+                var i=0;
+                $(".nav2_wrap li").css({borderTop:"none"});
+                $(this).css({borderTop:"3px solid red",margin:"-1px 0 0 0",padding:"20px 0 0 0"});
+                $(".main_slide").stop().hide();
+                $(".main_slide").eq(3).stop().show();
+            });
+            
+            let ani = setInterval(slide,5000)
+            $(".nav2_wrap li").mouseover(function(){
+                clearInterval(ani);
+            });
+            $(".nav2_wrap li").mouseout(function(){
+                $(this).css({borderTop: "3px solid red", margin: "-1px 0 0 0",padding:"20px 0 0 0"});
+                ani = setInterval(slide,5000);
+            });
+        });
+
+        /*bestseller*/
+        $(function(){
+            $(".best_ranking2").hide();
+            $(".best_wrap > div:nth-of-type(2)").mouseover(function(){
+                $(".today_box").css({"border-bottom":"1px solid #888"});
+                $(".week_box").css({"border-bottom":"none","border-right":"none"});
+                $('.best_ranking2').stop().fadeIn();
+                $('.best_ranking1').stop().hide();
+            });
+            $(".best_wrap > div:nth-of-type(1)").mouseover(function(){
+                $(".today_box").css({"border-bottom":"none"});
+                $(".week_box").css({"border-bottom":"1px solid #888"});
+                $('.best_ranking1').stop().fadeIn();
+                $('.best_ranking2').stop().hide();
+            });
+        });
+
+        /*left slider*/
+        $(function(){
+            $(".header_bottom_left").mouseenter(function(){
+                if($(".header_bottom_left_hover").css("display")=="none"){
+                    $(".header_bottom_left_hover").animate({
+                        width:"toggle",
+                        height:"toggle",
+                        opacity:"1"
+                    },"slow");
+                }
+            });
+            $(".hover_close1").click(function(){
+                $(".header_bottom_left_hover").animate({
+                    width:"toggle",
+                    height:"toggle",
+                    opacity:"0"
+                },"slow");
+            });
+            $(".hover_close2").click(function(){
+                $(".header_bottom_left_hover").animate({
+                    width:"toggle",
+                    height:"toggle",
+                    opacity:"0"
+                },"slow");
+            });            
+        });
+
+        /*main_banner_left*/
+        $(function(){
+            function prev2(){
+                $(".left_banner li:last").prependTo(".left_banner");
+            }
+            function next2(){
+                $(".left_banner li:first").appendTo(".left_banner");
+            }
+            $(".main_banner_prev").click(function(){
+                prev2();
+            });
+            $(".main_banner_next").click(function(){
+                next2();
+            });
+        });
+
+
+        /*인터파크 추천!*/
+        $(function(){
+            $.ajax({
+                method: "GET",
+                url: "https://dapi.kakao.com/v3/search/book?target=title",
+                data: {query:"오늘밤, 세계에서"},
+                headers:{Authorization: "KakaoAK d194d7880d9d146ec235a78a0c31d605"}
+            })
+            .done(function(msg){
+                console.log( msg.documents[1].title );
+                console.log( msg.documents[1].thumbnail );
+                var divs = document.getElementsByTagName('div');
+                for(var i=0; i<divs.length; i++){
+                    $(".main2_slide > li:nth-child(1) > .inter_imgbox").eq(i).append('<a href="#">'+"<img src='"+msg.documents[i].thumbnail+"'/>"+"</a>");
+                    $(".main2_slide > li:nth-child(1) > .inter_content > p").eq(i).append(msg.documents[i].title);
+                    var str=msg.documents[i].contents;
+                    var main2str2=str.substring(0,70);
+                    $(".main2_slide > li:nth-child(1) > .inter_content > .content > p").eq(i).append("<p>"+main2str2+"</p>");
+                }
+            });
+
+
+            $.ajax({
+                method: "GET",
+                url: "https://dapi.kakao.com/v3/search/book?target=title",
+                data: {query:"나미야 잡화점의 기적"},
+                headers:{Authorization: "KakaoAK d194d7880d9d146ec235a78a0c31d605"}
+            })
+            .done(function(msg){
+                console.log( msg.documents[1].title );
+                console.log( msg.documents[1].thumbnail );
+                var divs = document.getElementsByTagName('div');
+                for(var i=0; i<divs.length; i++){
+                    $(".main2_slide > li:nth-child(2) > .inter_imgbox").eq(i).append('<a href="#">'+"<img src='"+msg.documents[i].thumbnail+"'/>"+"</a>");
+                    $(".main2_slide > li:nth-child(2) > .inter_content > p").eq(i).append(msg.documents[i].title);
+                    var str=msg.documents[i].contents;
+                    var main2str2=str.substring(0,70);
+                    $(".main2_slide > li:nth-child(2) > .inter_content > .content > p").eq(i).append("<p>"+main2str2+"</p>");
+                }
+            });
+            
+            
+            $.ajax({
+                method: "GET",
+                url: "https://dapi.kakao.com/v3/search/book?target=title",
+                data: {query:"세상의 마지막"},
+                headers:{Authorization: "KakaoAK d194d7880d9d146ec235a78a0c31d605"}
+            })
+            .done(function(msg){
+                console.log( msg.documents[1].title );
+                console.log( msg.documents[1].thumbnail );
+                var divs = document.getElementsByTagName('div');
+                for(var i=0; i<divs.length; i++){
+                    $(".main2_slide > li:nth-child(3) > .inter_imgbox").eq(i).append('<a href="#">'+"<img src='"+msg.documents[i].thumbnail+"'/>"+"</a>");
+                    $(".main2_slide > li:nth-child(3) > .inter_content > p").eq(i).append(msg.documents[i].title);
+                    var str=msg.documents[i].contents;
+                    var main2str2=str.substring(0,70);
+                    $(".main2_slide > li:nth-child(3) > .inter_content > .content > p").eq(i).append("<p>"+main2str2+"</p>");
+                }
+            });
+            
+            
+            $.ajax({
+                method: "GET",
+                url: "https://dapi.kakao.com/v3/search/book?target=title",
+                data: {query:"죽음에 네가"},
+                headers:{Authorization: "KakaoAK d194d7880d9d146ec235a78a0c31d605"}
+            })
+            .done(function(msg){
+                console.log( msg.documents[1].title );
+                console.log( msg.documents[1].thumbnail );
+                var divs = document.getElementsByTagName('div');
+                for(var i=0; i<divs.length; i++){
+                    $(".main2_slide > li:nth-child(4) > .inter_imgbox").eq(i).append('<a href="#">'+"<img src='"+msg.documents[i].thumbnail+"'/>"+"</a>");
+                    $(".main2_slide > li:nth-child(4) > .inter_content > p").eq(i).append(msg.documents[i].title);
+                    var str=msg.documents[i].contents;
+                    var main2str2=str.substring(0,70);
+                    $(".main2_slide > li:nth-child(4) > .inter_content > .content > p").eq(i).append("<p>"+main2str2+"</p>");
+                }
+            });            
+
+
+        });
+
+
+        /*인터파크 추천 슬라이드*/
+        $(function(){
+            function prev3(){
+                $('.main2_slide li:last').prependTo('.main2_slide');
+                $('.main2_slide').css({marginLeft:-510});
+                $('.main2_slide').stop().animate({ marginLeft: 0 }, 800);
+            }
+
+            function next3(){
+                $('.main2_slide').stop().animate({marginLeft:-510}, function(){
+                    $('.main2_slide li:first').appendTo('.main2_slide');
+                    $('.main2_slide').css({ marginLeft: 0 });
+                });
+            }
+
+            function slide3(){
+                $('.main2_slide').stop().animate({marginLeft:-510}, function(){
+                    $('.main2_slide li:first').appendTo('.main2_slide');
+                    $('.main2_slide').css({ marginLeft: 0 });
+                });                
+            }
+
+            setInterval(slide3,5000);
+            $('.inter_prev').click(function(){
+                prev3();
+            });
+
+            $('.inter_next').click(function(){
+                next3();
+            });            
+        });
+
+
+        /*미디어 추천 버튼*/
+        $(function(){
+            var wid=$(".media").width();
+            var i=$(".dot1 li.on").index();
+            var len=$(".media>ul>li").lenght;
+            $(".media_prev").click(function(){
+                if(i==0){
+                    i=2;
+                } else{
+                    i=i-1;
+                }
+                showSlide();
+            });
+
+            $(".media_next").click(function(){
+                if(i==2){
+                    i=0;
+                } else {
+                    i=i+1;
+                }
+                showSlide();
+            });
+
+            $(".dot1 li").click(function(){
+                i=$(this).index();
+                showSlide();
+            });
+
+            function showSlide(){
+                $(".dot1 li").removeClass("on");
+                $(".dot1 li").eq(i).addClass("on");
+                $(".media>ul>li").stop(true, true).fadeOut();
+                $(".media>ul>li").eq(i).stop(true, true).fadeIn();
+            }
+        });
+
+        /*이 책 어떄?*/
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book?target=title",
+            data: { query:"자바스크립트" },
+            headers:{Authorization: "KakaoAK d194d7880d9d146ec235a78a0c31d605"}
+        })
+        .done(function(msg){
+            console.log(msg.documents[1].title);
+            console.log(msg.documents[1].thumbnail);
+
+            var divs=document.getElementsByTagName('div');
+            for(var i=0; i<divs.length; i++){
+                $(".how_content > div").eq(i).append("<img src='" + msg.documents[i].thumbnail + "'/><br>" + "<p>쉽게 배우는 자바스크립트 입문서</p>" + "<span>" + msg.documents[i].title + "</span>");
+            }
+        });
+
+        /*이 책 어떄? 버튼*/
+        $(function(){
+            var wid=$(".how").width();
+            var i=$(".dot2 li.on").index();
+            var len=$(".how>ul>li").length;
+
+            $(".how_prev").click(function(){
+                if(i==0){
+                    i=len-1;
+                } else{
+                    i=i-1;
+                }
+                showSlide();
+            });
+
+            $(".how_next").click(function(){
+                if(i==4){
+                    i=0;
+                } else {
+                    i=i+1;
+                }
+                showSlide();
+            }); 
+            
+            $(".dot2 li").click(function(){
+                i=$(this).index();
+                showSlide();
+            });   
+            
+            function showSlide(){
+                $(".dot2 li").removeClass("on");
+                $(".dot2 li").eq(i).addClass("on");
+                $(".how>ul>li").stop(true, true).fadeOut();
+                $(".how>ul>li").eq(i).stop(true, true).fadeIn();
+            }            
+        });
+
+
+        /*분야별 추천_문학*/
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book",
+            data: { query:"문학"},
+            headers:{Authorization: "KakaoAK d194d7880d9d146ec235a78a0c31d605"}
+        })
+        .done(function(msg){
+            console.log( msg );
+            var divs = document.getElementsByTagName('div');
+
+            for(var i=0; i<divs.length; i++){
+                var str=msg.documents[i].title;
+                var str2=str.substring(0,25);
+
+                $("#main5_box_wrap1 li").eq(i).append("<img src='"+msg.documents[i].thumbnail+"'/>");
+                $("#main5_box_wrap1 li").eq(i).append("<h4><a href=''>"+str2+"..."+"</a></h4>");
+                $("#main5_box_wrap1 li").eq(i).append("<span>"+msg.documents[i].sale_price+"원"+"</span>");
+            }
+        });
+
+        /*분야별 추천_인문*/
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book",
+            data: { query:"인문"},
+            headers:{Authorization: "KakaoAK d194d7880d9d146ec235a78a0c31d605"}
+        })
+        .done(function(msg){
+            console.log( msg );
+            var divs = document.getElementsByTagName('div');
+
+            for(var i=0; i<divs.length; i++){
+                var str=msg.documents[i].title;
+                var str2=str.substring(0,25);
+
+                $("#main5_box_wrap2 li").eq(i).append("<img src='"+msg.documents[i].thumbnail+"'/>");
+                $("#main5_box_wrap2 li").eq(i).append("<h4><a href=''>"+str2+"..."+"</a></h4>");
+                $("#main5_box_wrap2 li").eq(i).append("<span>"+msg.documents[i].sale_price+"원"+"</span>");
+            }
+        }); 
+        
+        /*분야별 추천_경제*/
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book",
+            data: { query:"경제"},
+            headers:{Authorization: "KakaoAK d194d7880d9d146ec235a78a0c31d605"}
+        })
+        .done(function(msg){
+            console.log( msg );
+            var divs = document.getElementsByTagName('div');
+
+            for(var i=0; i<divs.length; i++){
+                var str=msg.documents[i].title;
+                var str2=str.substring(0,25);
+
+                $("#main5_box_wrap3 li").eq(i).append("<img src='"+msg.documents[i].thumbnail+"'/>");
+                $("#main5_box_wrap3 li").eq(i).append("<h4><a href=''>"+str2+"..."+"</a></h4>");
+                $("#main5_box_wrap3 li").eq(i).append("<span>"+msg.documents[i].sale_price+"원"+"</span>");
+            }
+        });    
+        
+        /*분야별 추천_아동*/
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book",
+            data: { query:"유아"},
+            headers:{Authorization: "KakaoAK d194d7880d9d146ec235a78a0c31d605"}
+        })
+        .done(function(msg){
+            console.log( msg );
+            var divs = document.getElementsByTagName('div');
+
+            for(var i=0; i<divs.length; i++){
+                var str=msg.documents[i].title;
+                var str2=str.substring(0,25);
+
+                $("#main5_box_wrap4 li").eq(i).append("<img src='"+msg.documents[i].thumbnail+"'/>");
+                $("#main5_box_wrap4 li").eq(i).append("<h4><a href=''>"+str2+"..."+"</a></h4>");
+                $("#main5_box_wrap4 li").eq(i).append("<span>"+msg.documents[i].sale_price+"원"+"</span>");
+            }
+        }); 
+        
+        /*분야별 추천_학습*/
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book",
+            data: { query:"학습"},
+            headers:{Authorization: "KakaoAK d194d7880d9d146ec235a78a0c31d605"}
+        })
+        .done(function(msg){
+            console.log( msg );
+            var divs = document.getElementsByTagName('div');
+
+            for(var i=0; i<divs.length; i++){
+                var str=msg.documents[i].title;
+                var str2=str.substring(0,25);
+
+                $("#main5_box_wrap5 li").eq(i).append("<img src='"+msg.documents[i].thumbnail+"'/>");
+                $("#main5_box_wrap5 li").eq(i).append("<h4><a href=''>"+str2+"..."+"</a></h4>");
+                $("#main5_box_wrap5 li").eq(i).append("<span>"+msg.documents[i].sale_price+"원"+"</span>");
+            }
+        });  
+        
+        /*분야별 추천_외국도서*/
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book",
+            data: { query:"speak"},
+            headers:{Authorization: "KakaoAK d194d7880d9d146ec235a78a0c31d605"}
+        })
+        .done(function(msg){
+            console.log( msg );
+            var divs = document.getElementsByTagName('div');
+
+            for(var i=0; i<divs.length; i++){
+                var str=msg.documents[i].title;
+                var str2=str.substring(0,25);
+
+                $("#main5_box_wrap6 li").eq(i).append("<img src='"+msg.documents[i].thumbnail+"'/>");
+                $("#main5_box_wrap6 li").eq(i).append("<h4><a href=''>"+str2+"..."+"</a></h4>");
+                $("#main5_box_wrap6 li").eq(i).append("<span>"+msg.documents[i].sale_price+"원"+"</span>");
+            }
+        });   
+        
+        /*분야별 추천_nav*/
+        $(function(){
+            var i=0;
+            $("#main5 > .main5_wrap > #main5_nav > li").mouseenter(function(){
+                i = ($(this).index())+1
+                $("#main5 > .main5_wrap > div").hide()
+                $("#main5 > .main5_wrap > #main5_nav > li").css({
+                        "border-bottom":"none",
+                        "color":"#000   "
+                }); 
+                $("#main5 > .main5_wrap > #main5_nav > li:hover").css({
+                        "border-bottom":"2px solid #e66a57",
+                        "color":"#e66a57"
+                });  
+                $("#main5 > .main5_wrap > div:nth-of-type"+"("+i+")").stop().fadeIn("fast");
+
+                if(i==3||i==4){
+                $(".main5_imgbox").attr("src","img/main5_img2.jpg");
+            } else if(i==5||i==6){
+                $(".main5_imgbox").attr("src","img/main5_img3.jpg");
+            } else {
+                $(".main5_imgbox").attr("src","img/main5_img1.jpg");
+            }                                            
+            });
+        });
+
+
+        /*주목! 이달의 책버튼*/
+        $(function(){
+            function prev4(){
+                $('.month_ul li:last').prependTo('.month_ul');
+                $('.month_ul').css({marginLeft:-450});
+                $('.month_ul').stop().animate({ marginLeft: 0 }, 800);
+            }
+
+            function next4(){
+                $('.month_ul').stop().animate({marginLeft:-450}, function(){
+                    $('.month_ul li:first').appendTo('.month_ul');
+                    $('.month_ul').css({ marginLeft: 0 });
+                });
+            }
+
+            function slide5(){
+                $('.month_ul').stop().animate({marginLeft:-450}, function(){
+                    $('.month_ul li:first').appendTo('.month_ul');
+                    $('.month_ul').css({ marginLeft: 0 });
+                });                
+            }
+
+
+            setInterval(slide5,5000);
+            $('.month_prev1').click(function(){
+                prev4();
+            });
+
+            $('.month_prev2').click(function(){
+                prev4();
+            });            
+
+            $('.month_next1').click(function(){
+                next4();
+            });  
+            
+            $('.month_next2').click(function(){
+                next4();
+            });            
+        });   
+        
+        /*특가할인 정가할인 버튼*/
+        $(function(){
+            function prev5(){
+                $('.main6_sale_ul li:last').prependTo('.main6_sale_ul');
+                $('.main6_sale_ul').css({marginLeft:0});
+                $('.main6_sale_ul').stop().animate({ marginLeft: 0 }, 800);                
+            }
+
+            function next5(){
+                $('.main6_sale_ul').stop().animate({marginLeft:0}, function(){
+                    $('.main6_sale_ul li:first').appendTo('.main6_sale_ul');
+                    $('.main6_sale_ul').css({ marginLeft: 0 });
+                });                
+            }
+
+            $('.sale_prev').click(function(){
+                prev5();
+            });
+            
+            $('.sale_next').click(function(){
+                next5();
+            });  
+
+        });
+
+        $(function(){
+            function prev6(){
+                $('.main6_sale_ul2 li:last').prependTo('.main6_sale_ul2');
+                $('.main6_sale_ul2').css({marginLeft:0});
+                $('.main6_sale_ul2').stop().animate({ marginLeft: 0 }, 800);                
+            }
+
+            function next6(){
+                $('.main6_sale_ul2').stop().animate({marginLeft:0}, function(){
+                    $('.main6_sale_ul2 li:first').appendTo('.main6_sale_ul2');
+                    $('.main6_sale_ul2').css({ marginLeft: 0 });
+                });                
+            }
+
+            $('.sale_prev').click(function(){
+                prev6();
+            });
+            
+            $('.sale_next').click(function(){
+                next6();
+            });  
+            
+        });   
+        
+        $(function(){
+            $('.main6_box2_menu li:first').click(function(){
+                $('.main6_sale_ul').show();
+                $('.main6_sale_ul2').hide();
+                $('.main6_box2_menu li:first').addClass("sale_li");
+                $('.main6_box2_menu li:nth-child(2)').removeClass("sale_li");
+            });
+            $('.main6_box2_menu li:nth-child(2)').click(function(){
+                $('.main6_sale_ul2').show();
+                $('.main6_sale_ul').hide();
+                $('.main6_box2_menu li:nth-child(2)').addClass("sale_li");
+                $('.main6_box2_menu li:first').removeClass("sale_li");                
+            });
+        });
+    </script>
+
+
+    <style>
+        * {margin:0; padding:0;}
+        a {text-decoration: none; color:#000;}
+        /*top 배너*/
+        #top_banner {width:100%; height:70px; margin:0 auto; display:flex; flex-direction: row; justify-content: center;}
+        .top_banner_left_wrap {background-color: #e3d1fb; width:100%; height:100%;}
+        .top_banner_left {width:540px; height:100%; float:right; cursor:pointer;}
+        .top_banner_right_wrap {background-color: #ff8225; width:100%; height:100%;}
+        .top_banner_right {width:540px; height:100%; float:left; position:relative; cursor:pointer;}
+        #top_banner span {position:absolute; top:0; right:0; cursor:pointer;}
+
+
+        /*header_top*/
+        #header_top {background-color: #eee; height:35px;}
+        .header_top_nav {width:1080px; display:flex; flex-direction: row; justify-content: space-between; margin:0 auto; height:100%;}
+
+        /*header_top_left*/
+        .header_top_left {width:350px; display:flex; flex-direction: row;}
+        .header_top_left > li {padding:10px; font-size:12px; border:1px solid #ccc; width:30px; text-align: center; }
+        .header_top_left > li:last-child { background-color: #fff; border-bottom: 1px solid #fff;}
+        .header_top_left_li > a {color:#ef544d;} 
+
+        /*header_top_right*/
+        .header_top_right {width:630px; display:flex; flex-direction: row; margin-left: 180px;}
+        .header_top_right > li > a:hover {color:#ef544d;}
+        .header_top_right > li {padding:10px; font-size: 12px;}
+        .mypage {position:relative;}
+        .mypage_list {display:none; height:100px; padding:10px 0px; line-height:20px; border:2px solid #ef544d; position:absolute; top:30px; left:-27px; width:100px; z-index:2; background-color:#fff;}
+        .mypage_list > li {margin:0 0 0 10px;}
+        .mypage_list > li > a:hover {color:#ef544d;}
+        .language {position:relative;}
+        .language_list {display:none; height:60px; padding:10px 0px; line-height:20px; border:2px solid #ef544d; position:absolute; top:30px; left:-10px; width:80px; z-index:2; background-color:#fff;}
+        .language_list > li {margin:0 0 0 20px;}
+        .language_list > li > a:hover {color:#ef544d;}  
+        
+        /*header_mid*/
+        #header_mid {width:1080px; margin:0 auto; height:auto; display:flex; flex-direction: row; justify-content: space-between;}
+        #heaeder_search {display:flex; flex-direction: column;}
+        .header_search_bar {width:450px; border-bottom:4px solid #ef544d; display: flex; flex-direction: row; justify-content: space-between;}
+        .header_search_bar > a > img {width:40px; height:40px; margin-top:10px;}
+        .search_bar_text {width:400px; height:40px; margin-top:10px; margin-bottom:5px; border:none; padding-left:10px; font-size: 15px; font-weight: 600;}
+        .header_search_nav {display:flex;}
+        .header_search_nav > li > a {color:#00adef; line-height: 40px; font-size: 12px; padding:5px 10px;}
+
+        /*header_bottom*/
+        #header_bottom { width:100%; height:auto; margin:0 auto;}
+        .parent {position:relative;}
+
+        /*nav*/
+        #header_bottom_nav {width:100%; height:60px; background-color:#ef544d; display:flex;justify-content:center; border-top: 2px solid #000; position:relative;}
+        .category1 {width:180px; font-size:20px; padding:20px; background-color:#c43730;}
+        .category1:hover {background-color:#850000; cursor:pointer;}
+        .category1 > li > a {color:#fff;}
+        .category1 > li > a:hover {color:#fff1a2;}
+        .category2 {width:820px; display:flex; font-size:20px; margin:20px;}
+        .category2 li {margin:0 15px;}
+        .category2 > li > a {color:#fff;} 
+        #up1 {display:none;}
+        
+
+
+        /*nav_slide*/
+        .nav_slide {position:absolute; top:60px; left:0px; z-index:5; width:900px; height:620px; background-color:#fff; border-bottom:2px solid #ef544d; border-left: 2px solid #ef544d; border-right: 2px solid #ef544d; display:none;}
+        .nav_slide > ul {display:flex; flex-wrap:wrap;}
+        .nav_slide > ul > li {width:295px; line-height:25px; border-right:1px solid #eee;}
+        .nav_slide > ul > li > span {font-size:20px; margin-left:30px;line-height:40px;}
+        .nav_slide > ul > li:last-child {border:none;}
+        .nav_slide_book > li {display:flex; justify-content: space-between; width:200px; margin:5px 30px; font-size:12px;}
+        .nav_slide_book > li > span > a:hover {color:#ef544d;}
+
+        /*header_bottom_slide*/
+        .header_bottom_slide {width:1080px; height:350px; margin:0 auto; border-bottom:2px solid #000; position:relative;}
+
+        /*header_bottom_left*/
+        #header_bottom_wrap {width:100%; height:auto; position:relative;}
+        .header_bottom_left {width:60px; height:140px; position:absolute; top:0; left:0; margin-top: 20px;}
+        .header_bottom_left > img {width:60px; height:100px;}
+        .header_bottom_left > img:last-child {width:60px; height:40px;}
+        .parent2 {position:relative; width:1280px; margin:0 auto;}
+        .header_bottom_left_hover {width:1280px; height:460px; z-index:3; position:absolute; top:0;left:100px; display:none;}
+        .header_bottom_left_hover img {width:100%; height:100%;}
+        .hover_close1 {width:100px; height:40px; position:absolute; top:420px; right:100px; cursor:pointer;}
+        .hover_close2 {width:70px; height:40px; position:absolute; top:420px; right:10px; cursor:pointer;}
+
+        /*header_bottom_img*/
+        .header_bottom_imgwrap {position:relative;}
+        .main_slide {position:absolute; top:0; left:0;}
+        .main_slide img {width:850px; height:350px;}
+        .main_slide:not(:first-child) {display:none;}
+
+        /*header_bottom_best*/
+        .header_bottom_best {width:230px; height:350px; position:absolute; top:0; left:850px;}
+        .best_box {width:230px; height:32px; line-height:35px; border-bottom:1px solid #626262; color:#fff1a2; font-weight:bold; font-size:15px; background-color:rgba(50,50,50,0.5);}
+        .best_box p {margin-left:20px;}
+        .best_wrap {width:230px; height:318px; display:flex; flex-wrap:wrap; background-color: rgba(50,50,50,0.5); color:#fff;}
+        .today_box {width:49%; height:30px; text-align:center; line-height:26px; font-size:12px; border-top:1px solid #b3b3b3; border-right:1px solid #b3b3b3; cursor:pointer;}
+        .week_box {width:49%; height:30px; text-align:center; font-size:12px; line-height:26px; border-top:1px solid #b3b3b3; border-left: 1px solid #888; border-bottom:1px solid #b3b3b3; cursor:pointer;}
+        .fa-minus {color:#b8b8b8; margin:3px 0 0 0px; font-size:6px; padding:0 3px 0 0px;}
+        .fa-caret-up {color:#eb3a3a; padding:0 5px 0 0px; font-size:14px;}
+        .fa-caret-down {color:#2083e0; padding:0 5px 0 0px; font-size:14px;}
+        .best_ranking1 {display:block;}
+        .best_ranking1 > div {width:100%; height:27px; font-size:12px; display:flex; flex-wrap:wrap; align-content: space-around; padding:0 20px;}
+        .best_ranking1 > div > span {padding:0 10px;}
+        .best_ranking1 > div > p {padding:0 5px;}
+
+        .best_ranking2 {display:none;}
+        .best_ranking2 > div {width:100%; height:27px; font-size:12px; display:flex; flex-wrap:wrap; align-content: space-around; padding:0 20px;}
+        .best_ranking2 > div > h5 {color:#eb3a3a; font-size:10px; font-weight:600;}
+        .best_ranking2 > div > span {padding:0 10px;}
+        .best_ranking2 > div > p {padding:0 5px;}        
+
+        /*header_bottom_nav2*/
+        .header_bottom_nav2 {width:100%; height:60px; background-color:#f7f7f7;}
+        .header_bottom_nav2_wrap {width:1080px; height:100%; margin:0 auto;}
+        .nav2_wrap {display:flex;}
+        .nav2_wrap li {width:212px; margin-top: 20px; text-align:center;}
+        .nav2_wrap > li > a {font-size:17px; font-weight:bold;}
+
+        /*main1*/
+        #section_group {width:1080px; height:auto;  position:relative; margin:0 auto;}
+        #main1 {width:1080px; height:120px; margin:0 auto; display:flex; justify-content: space-evenly;}
+        #main1 > .main1_img {width:300px; height:100px; padding-top:40px;}
+        .main1_img > img {width:300px;}
+
+        /*main_banner_left*/
+        #main_banner_left {width:92px; height:170px; border:1px solid #ebe8e8; position:absolute; top:60px; left:-120px; overflow:hidden;}
+        .main_banner_wrap {width:90px; height:154px;}
+        .left_banner {width:276px; height:158px;}
+        .main_banner_btn {width:90px; height:26px; display:flex; flex-direction:row; justify-content: center;}
+        .main_banner_prev {font-size:12px; color:#999; border:1px solid #c3c3c3; background-color:#eee; width:13px; height:13px; margin-right:5px;}
+        .main_banner_next {font-size:12px; color:#999; border:1px solid #c3c3c3; background-color:#eee; width:13px; height:13px; margin-left:5px;}
+
+        /*main2-인더파크 추천!*/
+        #main2 {padding-top:50px; display:flex; justify-content: space-between;}
+        #main2_box1 {width:795px; height:355px; border-top:1px solid #000; border-bottom: 1px solid #ddd; position:relative; display: flex; justify-content: center; align-items: center;}
+        #main2_box1 > img {position:absolute; top: -13px; left:42%;}
+        #main2_box1 > .more {font-size:11px; color:#666; letter-spacing: -1px; position: absolute; right:0; top:-20px;}
+        #main2_box1 > .more > a {text-decoration:none; color:#666; padding-right:10px;}
+        #main2_box1 > .more > a:hover {text-decoration:underline; color:#666;}
+
+        .main2_box1_wrap {width: 677px; height:248px; overflow: hidden;}
+        .main2_box1_wrap > .main2_slide {width: 3936px; height:248px;}
+        .main2_box1_wrap > .main2_slide > li {float:left; margin-right: 50px; width: 462px; height:248px; 
+display:flex; justify-content: space-between; align-items: center;} /* 457 + 170 */
+
+        .inter_imgbox {width: 150px; height: 212px; position: relative;}
+        .inter_imgbox > a > img {width:100%; height:auto; position:absolute; top:0; left: 0; box-shadow: 3px 3px 3px #ccc;}
+        .inter_imgbox > .inter_clip {z-index:3; position:absolute; top:-13px; left:5px;}
+
+        .inter_content {width: 295px; height: 212px; display: flex; flex-direction: column; justify-content: flex-end;}
+        .inter_content > .star {font-size:20px; color:rgb(247, 204, 12); text-shadow:1px 1px white, -1px -1px #ccc; line-height:20px; letter-spacing: -2px;}
+        .inter_content > .star > .score {font-size: 20px; color: #ef544d; margin:0 5px; text-shadow: none;}
+        .inter_content > p {font-size: 14px; color:#444; line-height: 20px; font-weight: bold; margin: 7px 0px;}
+        .inter_content > .content {width: 290px; height: 98px; background-color: #f7f7f7; padding:10px;}
+        .inter_content > .content > p {font-size: 13px; color:#444; padding-top:20px; line-height:20px;}
+
+        .inter_prev {font-size:25px; padding: 0 10px; position: absolute; top:45%; left:0; color:#ccc;}
+        .inter_prev:hover {color:#ef554d; cursor: pointer;}
+        .inter_next {font-size:25px; padding: 0 10px; position:absolute; top:45%; right:0; color:#ccc;}
+        .inter_next:hover {color:#ef554d; cursor: pointer;}
+
+        #main2_box2 {width:250px; height:355px; border-top:1px solid #000; background-color: #f7f7f7; position: relative; letter-spacing: -0.8px;}
+        #main2_box2 > img {width:100%; height:100%;}
+        #main2_box2 > span {position: absolute; left:0; top:-22px; font-size:14px; font-weight: bold; color:#555;}
+
+        /*main3*/
+        #main3 {display:flex; justify-content: space-between; padding-top:50px;}
+        #main3_box1 {width:380px; height:370px;}
+        #main3_box2 {width:380px; height:370px;}
+        #main3_box3 {width:240px; height:370px;}
+
+        .main3_title {width:220px; height:30px;}
+        .main3_span1 {font-size: 18px; color: #111; letter-spacing: -2px; font-family: 'Noto Sans KR', sans-serif; font-weight:600;}
+        .main3_span2 {font-size: 18px; color: #ef544d; letter-spacing: -2px; font-family: 'Noto Sans KR', sans-serif; font-weight:600; padding-left:5px;}
+
+        /*main3_출판사 초이스*/
+        .choice_wrap {width:380px; height:334px; border:1px solid #ddd;}
+        .choice_wrap > img {width:100%; height:100%;}
+
+        /*main3_미디어 추천*/
+        .media_wrap {width:380px; height:334px; position:relative; display:flex; justify-content: center; align-items: center; border: 1px solid #ddd; overflow: hidden;}
+        .media_wrap > .dot1 {position:absolute; top:0; margin: 0 auto; width:15%; display:flex; justify-content:space-evenly; align-items:center; font-size:8px; color:#ccc; height:40px;}
+        .media_wrap > .dot1 > li {cursor: pointer;}
+        .media_wrap > .dot1 > li:hover, .media_wrap > .dot1 > li.on {color:#4cc1ec;}
+        .media {width:380px; height:334px; cursor: pointer; position:relative;}
+        .media > ul {width:100%; height:100%;}
+        .media_content {width:380px; height:334px; position:absolute; top:0; left:0;}
+        .media_content:first-child {display:block;}
+        .media_content:not(:first-child) {display:none;}
+        .media_content > img {width:100%; height:100%;}
+
+        .media_prev {font-size:25px; padding: 0 10px; position: absolute; top:45%; left:0; color:#ccc;}
+        .media_prev:hover {color:#ef554d; cursor: pointer;}
+        .media_next {font-size:25px; padding: 0 10px; position:absolute; top:45%; right:0; color:#ccc;}
+        .media_next:hover {color:#ef554d; cursor: pointer;}
+
+
+        /*main3_이 책 어떄?*/
+        .how_wrap {width:238px; height:290px; position:relative; padding:20% 0 0; display:flex; justify-content: center; align-items: center;}
+        .how_wrap > .dot2 {position:absolute; top:0; width:35%; display:flex; justify-content:space-evenly; align-items:center; font-size:10px; letter-spacing: -5px; color:#ccc; height:40px; margin: 0 auto;}
+        .how_wrap > .dot2 > li {cursor: pointer;}
+        .how_wrap > .dot2 > li:hover, .how_wrap > .dot2 > li.on {color:#4cc1ec;}
+
+        .how {width:150px; height:270px; cursor:pointer; position:relative;}
+        .how > ul {width:100%; height:100%;}
+
+        .how_content {margin-top: 15px; width: 150px; height: 270px; position:absolute; top:0; left:0;}
+        .how_content:first-child {display:block;}
+        .how_content:not(:first-child) {display:none;}
+        .how_content > div {display: flex; flex-direction: column; align-items: center; justify-content: center;}
+        .how_content > div > img {box-shadow: 2px 2px 2px #ccc; border: 1px solid #eee;}
+        .how_content > div > p {font-size: 10px; color: #666; letter-spacing: -1px; margin-bottom: 15px; margin-top: -5px;}
+        .how_content > div > span {font-size: 12px; color: #222; letter-spacing: -1px; font-weight: bold;}
+
+        .how_prev {font-size:25px; padding: 0 10px; position: absolute; top:48%; left:0; color:#ccc;}
+        .how_prev:hover {color:#ef554d; cursor: pointer;}
+        .how_next {font-size:25px; padding: 0 10px; position: absolute; top:48%; right:0; color:#ccc;}
+        .how_next:hover {color:#ef554d; cursor: pointer;}
+
+        /*main4*/
+        #main4 {width:1080px; height:150px; margin:0 auto; padding-top:50px; padding-bottom:100px;}
+        .main4_login > img {width:100%; height:100%;}
+
+        /*main5*/
+        #main5 {width:1080px; height:auto; margin:0 auto; position:relative; border-top: 1px solid #111;}
+        .main5_title {width:190px; height:30px; background-color: #fff; margin: 0 auto; text-align: center; position: absolute; top: -12px; left: 40%;}
+        .main5_span1 {font-size: 22px; color: #111; letter-spacing: -2px; font-family: 'Noto Sans KR', sans-serif;}
+        .main5_span2 {font-size: 22px; color: #ef544d; letter-spacing: -2px; font-family: 'Noto Sans KR', sans-serif;}
+
+        #main5_nav {width:100%; height:45px; margin:30px auto; display: flex; justify-content: space-around; border-bottom: 1px solid #c9c9c9;}
+        #main5_nav li {float:left; width:11.5%; height:100%; line-height:45px; text-align: center; position: relative; font-weight: bold; font-size: 14px; color: #222;}
+        #main5_nav li:hover {border-bottom:2px solid #ef544d; color:#ef544d; cursor: pointer;}
+        #main5_nav li:first-child {border-bottom:2px solid #ef544d; color:#ef544d; margin-left: 50px;}
+        #main5_nav li:last-child {margin-right: 50px;}
+        #main5_nav li:hover::before {content:""; position: absolute; left:50%; transform: translate(-50%); bottom:-12px; border-width: 5px; border-style:solid; border-color:#ef544d transparent transparent ;}       
+
+        #main5_box_wrap2, #main5_box_wrap3, #main5_box_wrap4, #main5_box_wrap5, #main5_box_wrap6 {display:none; width:100%; height: auto; position: relative;}
+        #main5_box_wrap1 {width:100%; height: auto; position: relative;}
+        .main5_box {width:1080px; height:400px;}
+        .main5_content {width:1080px; height:400px; display: flex; justify-content:space-evenly; align-content: center; align-items: center; margin:0 auto; position: relative;}
+
+        .main5_content > li {width: 200px; height: 360px; display: flex; flex-direction: column; justify-content: space-around; text-align: center;}
+        .main5_content > li > img {width: auto; height: auto; margin: 0 auto; box-shadow: 2px 2px 2px #ccc; cursor: pointer;}
+        .main5_content > li > h4 {font-size: 12px; color: #555; margin-top: 5px; margin-bottom: 5px; height: 10px; letter-spacing: -1px;}
+        .main5_content > li > h4 > a {text-decoration: none; color: #555;}
+        .main5_content > li > span {font-size: 14px; color: #222; letter-spacing: -1px;}
+        .main5_img {width:980px; height:80px; margin:0 auto;}
+        .main5_img > img {width:100%; height:100%;}
+
+        /*main6*/
+        #main6 {padding-top:50px; width:1080px; height:500px; margin:0 auto; display:flex; justify-content: space-between;}
+
+        /*main6_box1*/
+        #main6_box1 {width:450px; height:400px;}
+        .main6_title {width: 450px; height: 40px; display: flex; justify-content: space-between;}
+        .main6_title_box1 {width: 45%; height: 40px;}       
+        .main6_title_box1 > p {font-size: 18px; display: inline-block; line-height: 40px; margin-right: 5px; letter-spacing: -1px;}
+        .main6_title_box1 > p > span {color:#ef544d; font-weight:bold; padding-right:5px;}
+        .main6_title_box1 > span {font-size: 11px; color: #666;}
+        .main6_title_box1 > span > a {text-decoration: none; color: #666; letter-spacing: -1px;}
+        .main6_title_box1 > span > a:hover {text-decoration: underline; color: #666;}
+        .main6_title_box2 {width: 25%; height: 40px; display: flex; align-items: center;}
+        .month_wrap {width:450px; height:400px; position:relative;}
+
+        .page_num > span {font-size:14px; margin:0 0 0 10px;}
+        .page_num_span {color:#ef544d;}
+        .page_btn {position:relative;}
+        .month_prev1 {font-size:15px; padding: 0 5px; position: absolute; top:0; left:30px; color:#ccc; border: 1px solid #c3c3c3;}
+        .month_prev1:hover {color:#ef554d; border-color:#ef554d; cursor: pointer;}
+        .month_next1 {font-size:15px; padding: 0 5px; position: absolute; top:0; right:-80px; color:#ccc; border: 1px solid #c3c3c3;}
+        .month_next1:hover {color:#ef554d; border-color:#ef554d; cursor: pointer;} 
+        .month_prev2 {font-size:25px; padding: 0 10px; position: absolute; top:48%; left:0; color:#ccc;}
+        .month_prev2:hover {color:#ef554d; cursor: pointer;}
+        .month_next2 {font-size:25px; padding: 0 10px; position: absolute; top:48%; right:0; color:#ccc;}
+        .month_next2:hover {color:#ef554d; cursor: pointer;}
+
+        .month_wrap {width: 400px; height: 400px; border-top: 1px solid #000; padding: 0 25px; overflow:hidden;}
+        .month_wrap > ul {width: 1850px; height: 100%;}
+        .month_wrap > ul > li {width: 450px; height: 100%; float: left;}
+
+        .month_li_top {width: 400px; height: 50%; display: flex; justify-content: space-between; align-content: center; align-items: center;}
+        .month_li_bottom {width: 400px; height: 50%; display: flex; justify-content: space-between; align-content: center; align-items: center;}
+
+        .month_imgbox {width: 105px; height: 146px;}
+        .month_content {width: 250px; height: 106px;}
+        .month_imgbox > a > img {width: 100%; height: 100%;}
+
+        .month_content > .star {font-size:20px; color:rgb(247, 204, 12); text-shadow:1px 1px white, -1px -1px #ccc; line-height:20px; letter-spacing: -2px;}
+        .month_content > .star > .score {font-size: 20px; color: #ef544d; margin:0 5px; text-shadow: none; letter-spacing: 0.5px;}
+        .month_content > h3 {font-size:16px; color:#000; font-weight:bold; padding-top:20px;}
+        .month_content > h3 > a:hover {text-decoration:underline;}
+        .month_content > p {font-size: 14px; color: #555; font-weight: bold; letter-spacing: -1px; padding-top:30px;}
+        .month_content > p > a {text-decoration: none; color: #555;}
+        .month_content > p > a > span {color:#ccc; padding-right:20px; text-decoration:line-through;}
+
+        /*main6_box2*/
+        #main6_box2 {width:600px; height:400px; position:relative;}
+        .main6_box2_title {width:600px; height:40px; }
+        .main6_box2_menu {display:flex; cursor: pointer; text-align:center;}
+        .main6_box2_menu > li {width:100px; font-size:20px; line-height:40px; border-bottom:1px solid #000;}
+        .main6_box2_menu >li:last-child {width:400px;}
+        .main6_box2_menu > .sale_li {border-top:1px solid #000; border-left:1px solid #000; border-right:1px solid #000; border-bottom:none; color:#ef544d; font-weight:bold;}
+
+        .main6_sale_show {width:600px; height:310px; padding-top:60px; overflow:hidden; position:relative;}
+        .main6_sale_wrap {width:1200px; height:310px; }
+        .main6_sale_ul {display:flex; justify-content:space-around;}
+        .main6_sale1 {width:550px; height:310px; display:flex; justify-content:space-evenly; align-items:center; }
+        .main6_sale2 {width:550px; height:310px; display:flex; justify-content:space-evenly; align-items:center;}
+        .main6_sale_ul2 {display:flex; justify-content:space-around; display:none;}
+        .main6_sale3 {width:550px; height:310px; margin-left:25px; display:flex; justify-content:space-evenly; align-items:center;}
+        .main6_sale4 {width:550px; height:310px; margin-left:25px; display:flex; justify-content:space-evenly; align-items:center;}  
+        
+        .main6_sale_content {width:150px; height:250px;}
+        .main6_sale_img {width:150px; height:150px; position:relative;}
+        .main6_sale_img > img {width:100%; height:100%;}
+        .main6_sale_text {width:150px; height:100px; text-align:center;}
+        .main6_sale_text h3 { padding-top:20px; font-size:13px; font-weight:bold;}
+        .main6_sale_text > span {line-height:30px; text-decoration: line-through; color:#ccc; font-size:12px;}
+        .main6_sale_text > p {font-size:12px;}
+        .discount {width:67px; height:50px; background:url(img/discount_icon.png)no-repeat; position:absolute; top:100px; left:90px; text-align: center; font-size:12px; color:#feffb0; display:flex; flex-direction: column; justify-content:center;}
+        .discount > span {color:#fff; text-align:center; font-size:20px; font-family: tahoma, sans-serif;}
+        .sale_prev {font-size:40px; padding: 0 10px; position: absolute; top:50%; left:0; color:#ccc;}
+        .sale_prev:hover {color:#ef554d; cursor: pointer;}
+        .sale_next {font-size:40px; padding: 0 10px; position: absolute; top:50%; right:-1%; color:#ccc;}
+        .sale_next:hover {color:#ef554d; cursor: pointer;}
+
+        /*main7*/
+        #main7 {width:1080px; height:auto; margin:0 auto;}
+        .main7_title {width:1080px; height:40px; border-bottom:2px solid #000; display:flex; justify-content:space-between;}
+        .main7_title_box1 {width:250px; height:40px;}
+        .main7_title_box1 > span {font-size:25px; font-weight:bold; line-height:40px;}
+        .main7_title_box2 {width:400px; height:40px;}
+        .main7_title_box2 > span {font-size:14px; line-height:40px;}
+        .main7_content {width:1080px; height:200px; display:flex; justify-content: space-between;}
+        .main7_content_box {width:250px; height:200px; padding-top:10px;}
+        .main7_content_box:last-child {width:300px;}
+        .main7_content_box > span {font-size:15px; font-weight:bold; line-height:40px;}
+        .main7_content_box > ul > li {font-size:12px; color:#888888; line-height:20px;}
+        .main7_content_box > ul > li > span {padding-left:50px;}
+        .main7_content_box > ul > li > .main7_span {padding-left:60px;}
+
+        /*main8*/
+        #main8 {width:100%; height:60px; display:flex; justify-content: center; background-color:#58cfc7;}
+        .main8_left {width:540px; border-right:1px solid #fff;}
+        .main8_light {width:540px; border-left:1px solid #fff;}
+        .main8_left > p {font-size:17px; font-family:sans-serif; color:#fff; padding-left:90px; padding-top:25px;}
+        .main8_left > p > span {font-size:17px; font-family:sans-serif; color:#fff5b1;}
+        .main8_right > p {font-size:17px; font-family:sans-serif; color:#fff; padding-top:25px; padding-left:10px;}
+        .main8_right > p > span {font-size:17px; font-family:sans-serif; color:#fff5b1;}
+
+        /*footer*/
+        footer {width:100%; height:auto;}
+        .footer_wrap {width:1080px; height:auto; margin:0 auto;}
+        .footer_top {width:1080px; height:40px;}
+        .footer_top > ul {display:flex;}
+        .footer_top > ul > li {font-size:12px; font-family:sans-serif; color:#b8b8b8; padding:10px 5px 0px 5px;}
+        .footer_top > ul > li > a {font-size:12px; font-family:sans-serif; color:#b8b8b8; padding-top:10px;}        
+        .footer_top > ul > li > span {font-size:12px; font-family:sans-serif; color:#2a2a2a;}
+
+        .footer_mid {width:1080px; height:200px; display:flex; justify-content: space-between;}
+        .footer_mid_box1 {width:300px; height:200px;}
+        .footer_mid_box1 > ul > li > a {font-size:12px; line-height:20px; color:#888888;}
+        .footer_mid_box1 > ul > .footer_li > a {font-size:15px; font-weight:bold; padding-bottom:10px; color:#000; line-height:30px;}
+
+        .footer_mid_box2 {width:300px; height:200px;}
+        .footer_mid_box2 > ul > li {font-size:12px; line-height:30px; color:#888888;}
+        .footer_mid_box2 > ul > .footer_li > a {font-size:15px; font-weight:bold; color:#000; line-height:30px;}
+        .footer_mid_box2 > ul > .footer_li > a > img {cursor: pointer;}
+
+        .footer_mid_box3 {width:350px; height:200px;}
+        .footer_mid_box3 > ul > li {font-size:12px; line-height:30px; color:#888888;}
+        .footer_mid_box3 > ul > li > img {cursor: pointer;}
+        .footer_mid_box3 > ul > .footer_li > a {font-size:15px; font-weight:bold; color:#000; line-height:30px;}
+
+        .footer_bottom {width:1080px; height:60px; line-height:20px;}
+        .footer_bottom > p {font-size:11px; font-family:sans-serif; color:#666666;}
+        .footer_bottom > span {font-size:11px; font-family: sans-serif; color:#b8b8b8;}
+
+    </style>
+
+
+</head>
+<body>
+    <!--top_banner-->
+    <div id="top_banner">
+      <div class="top_banner_left_wrap">
+        <div class="top_banner_left">
+            <img src="img/top_banner1.jpg" alt="top_banner img1">
+        </div>
+      </div>
+
+      <div class="top_banner_right_wrap">
+        <div class="top_banner_right">
+            <img src="img/top_banner2.jpg" alt="top_banner img2">
+            <span>
+                <img src="img/closeBtn.png" alt="top_banner btn">
+            </span>
+        </div>
+      </div>
+    </div>
+
+    <!--header-->
+    <header>
+        <div id="header_top">
+            <nav class="header_top_nav">
+                <ul class="header_top_left">
+                    <li><a href="#">홈</a></li>
+                    <li><a href="#">투어</a></li>
+                    <li><a href="#">티켓</a></li>
+                    <li><a href="#">쇼핑</a></li>
+                    <li class="header_top_left_li"><a href="#">도서</a></li>
+                </ul>
+
+                <ul class="header_top_right">
+                    <li><a href="#">로그인</a></li>
+
+                    <li><a href="#">회원가입</a></li>
+
+                    <li><a href="#">북카트</a></li>
+
+                    <li class="mypage">
+                        <a href="#">마이페이지</a>
+                        <img src="img/arrow_down.png" alt="arrow_down icon">
+                        <ul class="mypage_list">
+                            <li><a href="#">마이도서</a></li>
+                            <li><a href="#">주문배송조회</a></li>
+                            <li><a href="#">I-포인트적립</a></li>
+                            <li><a href="#">나의할인쿠폰</a></li>
+                            <li><a href="#">회원수정</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">북피니언</a></li>
+
+                    <li><a href="#">고객센터</a></li>
+
+                    <li><a href="#">모바일APP</a></li>
+
+                    <li class="language">
+                        <a href="#">Language</a>
+                        <img src="img/arrow_down.png" alt="arrow_down icon">
+                        <ul class="language_list">
+                            <li><a href="#">English</a></li>
+                            <li><a href="#">日本語</a></li>
+                            <li><a href="#">中文</a></li>
+                        </ul>                    
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+        <div id="header_mid">
+            <div id="logo">
+                <a href="#"><img src="img/logo.png" style="-webkit-user-drag: none;" alt="logo"></a>
+            </div>
+
+            <div id="header_search">
+                <div class="header_search_bar">
+                    <input type="search" class="search_bar_text" placeholder="호퍼의 내면이 담긴 마법 같은 걸작">
+                    <a href="#">
+                        <img src="img/btn_search.png" alt="search icon">
+                    </a>
+                </div>
+                <ul class="header_search_nav">
+                    <li><a href="#">최인아 대표</a></li>
+                    <li><a href="#">|</a></li>
+                    <li><a href="#">과학의 위로</a></li>
+                    <li><a href="#">|</a></li>
+                    <li><a href="#">이해인 추천</a></li>
+                    <li><a href="#">|</a></li>
+                    <li><a href="#">돈많은친구</a></li>
+                    <li><a href="#">|</a></li>
+                    <li><a href="#">부와 성공의 법칙</a></li>
+                </ul>
+            </div>
+
+            <div id="header_mid_banner">
+                <a href="#"><img src="img/header_mid_banner.png" alt="header_mid banner"></a>
+            </div>
+        </div>
+
+        <div id="header_bottom">
+            <div id="header_bottom_nav">
+                <div class="parent">
+                <div class="nav_slide">
+                    <ul>
+                        <!--국내도서-->
+                        <li><span>국내도서</span>
+                            <ul class="nav_slide_book">
+                                <li>
+                                    <span><a href="#">소설</a></span>
+                                    <span><a href="#">자격서·수험서</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">장르소설</a></span>
+                                    <span><a href="#">공무원·수험서</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">시·에세이</a></span>
+                                    <span><a href="#">컴퓨터·인터넷</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">경제·경영</a></span>
+                                    <span><a href="#">전공·대학교재</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">자기계발</a></span>
+                                    <span><a href="#">여행</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">사회과학</a></span>
+                                    <span><a href="#">취미레저</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">역사·문화</a></span>
+                                    <span><a href="#">건강뷰티</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">예술·대중문화</a></span>
+                                    <span><a href="#">잡지</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">인문</a></span>
+                                    <span><a href="#">만화·라이트노벨</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">자연·과학</a></span>
+                                    <span><a href="#">유아동전집</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">종교·역학</a></span>
+                                    <span><a href="#">예약판매</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">유아</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">아동</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">가정과생활</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">청소년</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">초등학습</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">중등학습</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">고등학습</a></span>
+                                </li>
+
+                                <li>
+                                    <span><a href="#">국어·외국어·사전</a></span>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <!--외국도서-->
+                        <li><span>외국도서</span>
+                            <ul class="nav_slide_book">
+                                <li><span><a href="#">어린이</a></span></li>
+                                <li><span><a href="#">문학</a></span></li>
+                                <li><span><a href="#">ELT·사전</a></span></li>
+                                <li><span><a href="#">컴퓨터</a></span></li>
+                                <li><span><a href="#">경제·인문</a></span></li>
+                                <li><span><a href="#">실용·예술</a></span></li>
+                                <li><span><a href="#">대학·전문서적</a></span></li>
+                                <li><span><a href="#">해외잡지</a></span></li>
+                                <li><span><a href="#">학습교구/게임</a></span></li>
+                                <li><span><a href="#">프랑스도서</a></span></li>
+                                <li><span><a href="#">예약판매</a></span></li>
+                                <li><span><a href="#">원서/번역서</a></span></li>
+                            </ul>
+                        </li>
+
+                        <!--굿즈-->
+                        <li><span>굿즈</span>
+                            <ul class="nav_slide_book">
+                                <li><span><a href="#">문구/팬시</a></span></li>
+                                <li><span><a href="#">사무/학용</a></span></li>
+                                <li><span><a href="#">학습</a></span></li>
+                                <li><span><a href="#">독서용품</a></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+                <ul class="category1">
+                    <li class="category_click">
+                        <a href="#">
+                            <i class="fas fa-bars"></i>
+                            전체 카테고리
+                            <i class="fas fa-angle-down" id="down1"></i>
+                            <i class="fas fa-angle-up" id="up1"></i>
+                        </a>
+
+                    </li>
+                </ul>
+                <ul class="category2">
+                    <li><a href="#">베스트셀러</a></li>
+                    <li><a href="#">신간</a></li>
+                    <li><a href="#">이벤트</a></li>
+                </ul>
+            </div>
+
+            <!--슬라이더-->
+            <div id="header_bottom_wrap">
+                <div class="parent2">
+                    <div class="header_bottom_left">
+                        <img src="img/left1.png" alt="left1">
+                        <img src="img/left2.png" alt="left2">
+                    </div>
+                    <div class="header_bottom_left_hover">
+                        <img src="img/left3.jpg" alt="left3">
+                        <span class="hover_close1">
+                            <img src="img/close1.png" alt="close1">
+                        </span>
+                        <span class="hover_close2">
+                            <img src="img/close2.png" alt="close2">
+                        </span>
+                    </div>
+                </div>
+                
+            <div class="header_bottom_slide">
+                <div class="header_bottom_imgwrap">
+                    <div class="main_slide">
+                        <img src="img/slide1.png" alt="main slide1">
+                    </div>
+                    <div class="main_slide">
+                        <img src="img/slide2.jpg" alt="main slide2">
+                    </div>
+                    <div class="main_slide">
+                        <img src="img/slide3.png" alt="main slide3">
+                    </div>
+                    <div class="main_slide">
+                        <img src="img/slide4.png" alt="main slide4">
+                    </div>
+
+                </div>
+                <!--베스트셀러-->
+                <div class="header_bottom_best">
+                    <div class="best_box">
+                        <p>베스트셀러</p>
+                    </div>
+                    <div class="best_wrap">
+                        <div class="today_box">오늘</div>
+
+                        <div class="week_box">주간</div>
+
+                        <div class="best_ranking1">
+                            <div>
+                                <span>1</span>
+                                <i class="fas fa-minus"></i>
+                                <p>세이노의 가르침</p>
+                            </div>
+
+                            <div>
+                                <span>2</span>
+                                <i class="fas fa-minus"></i>
+                                <p>이지성의 1만 킬로미터</p>
+                            </div>
+
+                            <div>
+                                <span>3</span>
+                                <i class="fas fa-caret-up"></i>
+                                <em>1</em>
+                                <p>사장학개론</p>
+                            </div>
+
+                            <div>
+                                <span>4</span>
+                                <i class="fas fa-caret-down"></i>
+                                <em>1</em>
+                                <p>모든 삶은 흐른다</p>
+                            </div>
+
+                            <div>
+                                <span>5</span>
+                                <i class="fas fa-minus"></i>
+                                <p>나의 돈 많은 고등학교 친구</p>
+                            </div>
+
+                            <div>
+                                <span>6</span>
+                                <i class="fas fa-caret-up"></i>
+                                <em>2</em>
+                                <p>김경일의 지혜로운 인간생활</p>
+                            </div>
+
+                            <div>
+                                <span>7</span>
+                                <i class="fas fa-caret-down"></i>
+                                <em>1</em>
+                                <p>아버지의 해방일지</p>
+                            </div>
+
+                            <div>
+                                <span>8</span>
+                                <i class="fas fa-caret-up"></i>
+                                <em>5</em>
+                                <p>건강과 다이어트를 동시에...</p>
+                            </div>
+
+                            <div>
+                                <span>9</span>
+                                <i class="fas fa-caret-down"></i>
+                                <em>2</em>
+                                <p>내면소통</p>
+                            </div>
+
+                            <div>
+                                <span>10</span>
+                                <i class="fas fa-minus"></i>
+                                <p>AI 이후의 세계</p>
+                            </div>
+                        </div>
+
+                        <div class="best_ranking2">
+                            <div>
+                                <span>1</span>
+                                <i class="fas fa-minus"></i>
+                                <p>세이노의 가르침</p>
+                            </div>
+
+                            <div>
+                                <span>2</span>
+                                <i class="fas fa-caret-up"></i>
+                                <em>1</em>
+                                <p>모든 삶이 흐른다</p>
+                            </div>
+
+                            <div>
+                                <span>3</span>
+                                <i class="fas fa-caret-up"></i>
+                                <em>2</em>
+                                <p>나의 돈 많은 고등학교 친구</p>
+                            </div>
+
+                            <div>
+                                <span>4</span>
+                                <i class="fas fa-caret-down"></i>
+                                <em>2</em>
+                                <p>사장학개론</p>
+                            </div>
+
+                            <div>
+                                <span>5</span>
+                                <i class="fas fa-caret-up"></i>
+                                <em>5</em>
+                                <p>아버지의 해방일지</p>
+                            </div>
+
+                            <div>
+                                <span>6</span>
+                                <h5>NEW</h5>
+                                <p>이지성의 1만 킬로미터</p>
+                            </div>
+
+                            <div>
+                                <span>7</span>
+                                <i class="fas fa-caret-down"></i>
+                                <em>1</em>
+                                <p>메리골드 마음 세탁소</p>
+                            </div>
+
+                            <div>
+                                <span>8</span>
+                                <i class="fas fa-caret-up"></i>
+                                <em>6</em>
+                                <p>이미 늦었다고 생각하는 당...</p>
+                            </div>
+
+                            <div>
+                                <span>9</span>
+                                <i class="fas fa-caret-down"></i>
+                                <em>2</em>
+                                <p>건강과 다이어트를 동시에...</p>
+                            </div>
+
+                            <div>
+                                <span>10</span>
+                                <i class="fas fa-minus"></i>
+                                <p>흔한남매</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="header_bottom_nav2">
+                <div class="header_bottom_nav2_wrap">
+                    <ul class="nav2_wrap">
+                        <li><a href="#">핫클릭 이벤트</a></li>
+                        <li><a href="#">설득의 심리학</a></li>
+                        <li><a href="#">추천 이벤트</a></li>
+                        <li><a href="#">화제의 책</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--section all-->
+    <section id="section_group">
+
+        <!--main1-->
+        <section id="main1">
+            <div class="main1_img">
+                <img src="img/main1_img1.jpg" alt="main1_img1"> 
+            </div>
+            <div class="main1_img">
+                <img src="img/main1_img2.jpg" alt="main1_img2">
+            </div>
+            <div class="main1_img">
+                <img src="img/main1_img3.png" alt="main1_img3">
+            </div>
+        </section>
+
+        <!--main banner-->
+        <div id="main_banner_left">
+            <div class="main_banner_wrap">
+                <ul class="left_banner">
+                    <li>
+                        <img src="img/left_banner1.jpg" alt="left_banner1">
+                    </li>
+
+                    <li>
+                        <img src="img/left_banner2.jpg" alt="left_banner2">
+                    </li>
+
+                    <li>
+                        <img src="img/left_banner3.jpg" alt="left_banner3">
+                    </li>
+                    
+                    <li>
+                        <img src="img/left_banner4.jpg" alt="left_banner4">
+                    </li>                    
+                </ul>
+            </div>
+            <div class="main_banner_btn">
+                <span class="main_banner_prev">
+                    <img src="img/banner_prev.gif" alt="prev">
+                </span>
+                <span class="main_banner_next">
+                    <img src="img/banner_next.gif" alt="next">
+                </span>
+            </div>
+        </div>
+    
+        <!--main2-->
+        <section id="main2">
+            <div id="main2_box1">
+                <img src="img/recommend.png" style="-webkit-user-drag: none;" alt="인터파크추천!">
+                <span class="more"><a href="#">더보기 <i class="fas fa-caret-right"></i></a></span>
+                <div class="main2_box1_wrap">
+                    <ul class="main2_slide">
+                        <li>
+                            <div class="inter_imgbox">
+                                <div class="inter_clip" style="position:relative;">
+                                    <img src="img/heartClip.png" alt="하트클립">
+                                </div>
+                            </div>
+                            <div class="inter_content">
+                                <span class="star">★★★★★<span class="score">10</span></span>
+                                <p></p>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="inter_imgbox">
+                                <div class="inter_clip" style="position:relative;">
+                                    <img src="img/heartClip.png" alt="하트클립">
+                                </div>
+                            </div>
+                            <div class="inter_content">
+                                <span class="star">★★★★★<span class="score">10</span></span>
+                                <p></p>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="inter_imgbox">
+                                <div class="inter_clip" style="position:relative;">
+                                    <img src="img/heartClip.png" alt="하트클립">
+                                </div>
+                            </div>
+                            <div class="inter_content">
+                                <span class="star">★★★★★<span class="score">10</span></span>
+                                <p></p>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </li>  
+                        
+                        <li>
+                            <div class="inter_imgbox">
+                                <div class="inter_clip" style="position:relative;">
+                                    <img src="img/heartClip.png" alt="하트클립">
+                                </div>
+                            </div>
+                            <div class="inter_content">
+                                <span class="star">★★★★★<span class="score">10</span></span>
+                                <p></p>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </li>                         
+                    </ul>
+                </div>
+                <span class="inter_prev"><i class="fas fa-angle-left"></i></span>
+                <span class="inter_next"><i class="fas fa-angle-right"></i></span>
+            </div>
+
+            <!--Trend & Issue-->
+            <div id="main2_box2">
+                <span>Trend & Issue</span>
+                <img src="img/trend.jpg" alt="트랜드이미지">
+            </div>
+        </section>
+
+        <!--main3-->
+        <section id="main3">
+            <!--출판사 초이스!-->
+            <div id="main3_box1">
+                <div class="main3_title">
+                    <span class="main3_span1">출판사</span><span class="main3_span2">초이스 <i>!</i></span>
+                </div>
+                <div class="choice_wrap">
+                    <img src="img/choice.jpg" alt="출판사 초이스">
+                </div>
+            </div>
+
+            <!--미디어 추천!-->
+            <div id="main3_box2">
+                <div class="main3_title">
+                    <span class="main3_span1">미디어</span><span class="main3_span2">추천 <i>!</i></span>
+                </div>
+                <div class="media_wrap">
+                    <div class="media">
+                        <ul>
+                            <li class="media_content"><img src="img/media1.jpg" alt="미디어이미지1"></li>
+                            <li class="media_content"><img src="img/media2.jpg" alt="미디어이미지2"></li>
+                            <li class="media_content"><img src="img/media3.png" alt="미디어이미지3"></li>
+                        </ul>
+                    </div>
+                    <ul class="dot1">
+                        <li class="on"><i class="fas fa-circle"></i></li>
+                        <li><i class="fas fa-circle"></i></li>
+                        <li><i class="fas fa-circle"></i></li>
+                    </ul>
+                    <span class="media_prev"><i class="fas fa-angle-left"></i></span>
+                    <span class="media_next"><i class="fas fa-angle-right"></i></span>
+                </div>
+            </div>
+
+            <!--이 책 어떄?-->
+            <div id="main3_box3">
+                <div id="main3_title">
+                    <span class="main3_span1">이 책</span><span class="main3_span2">어떄 ?</span>
+                </div>
+                <div class="how_wrap">
+                    <div class="how">
+                        <ul>
+                            <li class="how_content"><div></div></li>
+                            <li class="how_content"><div></div></li>
+                            <li class="how_content"><div></div></li>
+                            <li class="how_content"><div></div></li>
+                            <li class="how_content"><div></div></li>
+                        </ul>
+                    </div>
+                    <ul class="dot2">
+                        <li class="on"><i class="fas fa-circle"></i></li>
+                        <li><i class="fas fa-circle"></i></li>
+                        <li><i class="fas fa-circle"></i></li>
+                        <li><i class="fas fa-circle"></i></li>
+                        <li><i class="fas fa-circle"></i></li>                        
+                    </ul>
+                    <span class="how_prev"><i class="fas fa-angle-left"></i></span>
+                    <span class="how_next"><i class="fas fa-angle-right"></i></span>                    
+                </div>
+            </div>
+        </section>
+
+        <!--main4-->
+        <section id="main4">
+            <div class="main4_login">
+                <img src="img/login.png" alt="로그인배너">
+            </div>
+        </section>
+
+        <!--main5-->
+        <section id="main5">
+            <div class="main5_title">
+                <span class="main5_span1">분야별 </span><span class="main5_span2">추천</span>
+            </div>
+
+            <div class="main5_wrap">
+                <ul id="main5_nav">
+                    <li>문학</li>
+                    <li>인문/교양</li>
+                    <li>경제/실용</li>
+                    <li>유아/아동</li>
+                    <li>학습/어학</li>
+                    <li>외국도서</li>
+                </ul>
+
+                <div id="main5_box_wrap1">
+                    <div class="main5_box">
+                        <ul class="main5_content">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>                       
+                    </div>
+                </div>
+
+                <div id="main5_box_wrap2">
+                    <div class="main5_box">
+                        <ul class="main5_content">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div id="main5_box_wrap3">
+                    <div class="main5_box">
+                        <ul class="main5_content">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div id="main5_box_wrap4">
+                    <div class="main5_box">
+                        <ul class="main5_content">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div id="main5_box_wrap5">
+                    <div class="main5_box">
+                        <ul class="main5_content">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div id="main5_box_wrap6">
+                    <div class="main5_box">
+                        <ul class="main5_content">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>                
+            </div>
+            <div class="main5_img">
+                <img src="img/main5_img1.jpg" alt="main5_img1" class="main5_imgbox">
+            </div>
+        </section>
+
+        <!--main6-->
+        <section id="main6">
+            <!--주목! 이달의 책-->
+            <div id="main6_box1">
+                <div class="main6_title">
+                    <div class="main6_title_box1">
+                        <p><span>주목!</span>이달의 책</p>
+                        <span><a href="#">더보기<i class="fas fa-caret-right"></i></a></span>
+                    </div>
+                    <div class="main6_title_box2">
+                        <div class="page_num">
+                            <span><span class="page_num_span">1</span>/4</span>
+                        </div>
+                        <div class="page_btn">
+                            <span class="month_prev1"><i class="fas fa-angle-left"></i></span>
+                            <span class="month_next1"><i class="fas fa-angle-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month_wrap">
+                    <ul class="month_ul">
+                        <li>
+                            <div class="month_li_top">
+                                <div class="month_imgbox">
+                                    <a href="#"><img src="img/month_img1.jpg" alt="이달의책1"></a>
+                                </div>
+                                <div class="month_content">
+                                    <span class="star">★★★★★<span class="score">10</span></span>
+                                    <h3><a href="#">호퍼 A-Z</a></h3>
+                                    <p><a href="#"><span>22,000원</span>19,800원</a></p>
+                                </div>
+                            </div>
+
+                            <div class="month_li_bottom">
+                                <div class="month_imgbox">
+                                    <a href="#"><img src="img/month_img2.jpg" alt="이달의책2"></a>
+                                </div>
+                                <div class="month_content">
+                                    <span class="star">★★★★★<span class="score">10</span></span>
+                                    <h3><a href="#">남극곰 1:북극 열차와 마지막 탐험대원</a></h3>
+                                    <p><a href="#"><span>12,500원</span>11,250원</a></p>
+                                </div>                                
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="month_li_top">
+                                <div class="month_imgbox">
+                                    <a href="#"><img src="img/month_img3.jpg" alt="이달의책3"></a>
+                                </div>
+                                <div class="month_content">
+                                    <span class="star">★★★★★<span class="score">10</span></span>
+                                    <h3><a href="#">아주 위험한 과학책</a></h3>
+                                    <p><a href="#"><span>23,000원</span>20,700원</a></p>
+                                </div>
+                            </div>
+
+                            <div class="month_li_bottom">
+                                <div class="month_imgbox">
+                                    <a href="#"><img src="img/month_img4.jpg" alt="이달의책4"></a>
+                                </div>
+                                <div class="month_content">
+                                    <span class="star">★★★★★<span class="score">10</span></span>
+                                    <h3><a href="#">블랙 쇼맨과 환상의 여자</a></h3>
+                                    <p><a href="#"><span>18,000원</span>16,200원</a></p>
+                                </div>                                
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="month_li_top">
+                                <div class="month_imgbox">
+                                    <a href="#"><img src="img/month_img5.jpg" alt="이달의책5"></a>
+                                </div>
+                                <div class="month_content">
+                                    <span class="star">★★★★★<span class="score">10</span></span>
+                                    <h3><a href="#">비트코인, 그리고 달러의 지정학</a></h3>
+                                    <p><a href="#"><span>55,000원</span>49,500원</a></p>
+                                </div>
+                            </div>
+
+                            <div class="month_li_bottom">
+                                <div class="month_imgbox">
+                                    <a href="#"><img src="img/month_img6.jpg" alt="이달의책6"></a>
+                                </div>
+                                <div class="month_content">
+                                    <span class="star">★★★★★<span class="score">10</span></span>
+                                    <h3><a href="#">건전지 엄마</a></h3>
+                                    <p><a href="#"><span>15,000원</span>13,500원</a></p>
+                                </div>                                
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="month_li_top">
+                                <div class="month_imgbox">
+                                    <a href="#"><img src="img/month_img7.jpg" alt="이달의책7"></a>
+                                </div>
+                                <div class="month_content">
+                                    <span class="star">★★★★★<span class="score">10</span></span>
+                                    <h3><a href="#">나를 위한 가벼운 집밥책</a></h3>
+                                    <p><a href="#"><span>16,800원</span>15,120원</a></p>
+                                </div>
+                            </div>
+
+                            <div class="month_li_bottom">
+                                <div class="month_imgbox">
+                                    <a href="#"><img src="img/month_img8.jpg" alt="이달의책8"></a>
+                                </div>
+                                <div class="month_content">
+                                    <span class="star">★★★★★<span class="score">10</span></span>
+                                    <h3><a href="#">안녕? 나의 꾸러기</a></h3>
+                                    <p><a href="#"><span>16,000원</span>14,400원</a></p>
+                                </div>                                
+                            </div>
+                        </li>
+                    </ul>
+                    <span class="month_prev2"><i class="fas fa-angle-left"></i></span>
+                    <span class="month_next2"><i class="fas fa-angle-right"></i></span>
+                </div>
+            </div>
+
+            <!--특가할인/정가인하-->
+            <div id="main6_box2">
+                <div class="main6_box2_title">
+                    <ul class="main6_box2_menu">
+                        <li class="sale_li">특가할인</li>
+                        <li>정가할인</li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="main6_sale_show">
+                    <div class="main6_sale_wrap">
+                        <ul class="main6_sale_ul">
+                            <li>
+                                <div class="main6_sale1">
+                                    <div class="main6_sale_content">
+                                        <div class="main6_sale_img">
+                                            <img src="img/sale1.jpg" alt="특가할인1">
+                                            <span class="discount">특가할인<span>30%</span></span> 
+                                        </div>
+
+                                        <div class="main6_sale_text">
+                                            <h3>씽씽 한글 버스</h3>
+                                            <span>정가 40,000원</span>
+                                            <p>28,000원</p>
+                                        </div>
+                                    </div>
+                                    <div class="main6_sale_content">
+                                        <div class="main6_sale_img">
+                                            <img src="img/sale2.jpg" alt="특가할인2">
+                                            <span class="discount">특가할인<span>30%</span></span> 
+                                        </div>
+
+                                        <div class="main6_sale_text">
+                                            <h3>씽씽 영어 버스</h3>
+                                            <span>정가 40,000원</span>
+                                            <p>28,000원
+                                            </p>
+                                        </div>                                        
+                                    </div>
+                                    <div class="main6_sale_content">
+                                        <div class="main6_sale_img">
+                                            <img src="img/sale3.jpg" alt="특가할인3">
+                                            <span class="discount">특가할인<span>30%</span></span> 
+                                        </div>
+
+                                        <div class="main6_sale_text">
+                                            <h3>씽씽 숫자 버스(숫자+셈하기 놀이)</h3>
+                                            <span>정가 40,000원</span>
+                                            <p>28,000원</p>
+                                        </div>                                        
+                                    </div>
+                                </div>                                
+                            </li>
+                            <li>
+                                <div class="main6_sale2">
+                                    <div class="main6_sale_content">
+                                        <div class="main6_sale_img">
+                                            <img src="img/sale4.jpg" alt="특가할인4">
+                                            <span class="discount">특가할인<span>30%</span></span> 
+                                        </div>
+
+                                        <div class="main6_sale_text">
+                                            <h3>알록달록 반짝반짝 버튼 사운드북</h3>
+                                            <span>정가 30,000원</span>
+                                            <p>21,000원</p>
+                                        </div>
+                                    </div>
+                                    <div class="main6_sale_content">
+                                        <div class="main6_sale_img">
+                                            <img src="img/sale5.jpg" alt="특가할인5">
+                                            <span class="discount">특가할인<span>30%</span></span> 
+                                        </div>
+
+                                        <div class="main6_sale_text">
+                                            <h3>핸들잡고 부릉부릉</h3>
+                                            <span>정가 28,000원</span>
+                                            <p>19,600원</p>
+                                        </div>                                        
+                                    </div>
+                                    <div class="main6_sale_content">
+                                        <div class="main6_sale_img">
+                                            <img src="img/sale6.jpg" alt="특가할인6">
+                                            <span class="discount">특가할인<span>30%</span></span> 
+                                        </div>
+
+                                        <div class="main6_sale_text">
+                                            <h3>소곤소곤 전래극장(장난감/완구)</h3>
+                                            <span>정가30,000원</span>
+                                            <p>21,000원</p>
+                                        </div>                                        
+                                    </div>                                    
+                                </div>
+                            </li>
+                        </ul>
+
+                        <ul class="main6_sale_ul2">
+                            <li>
+                                <div class="main6_sale3">
+                                    <div class="main6_sale_content">
+                                        <div class="main6_sale_img">
+                                            <img src="img/sale7.jpg" alt="정가할인1">
+                                            <span class="discount">정가할인<span>10%</span></span> 
+                                        </div>
+
+                                        <div class="main6_sale_text">
+                                            <h3>이방인</h3>
+                                            <span>정가 2,900원</span>
+                                            <p>2,610원</p>
+                                        </div>
+                                    </div>
+                                    <div class="main6_sale_content">
+                                        <div class="main6_sale_img">
+                                            <img src="img/sale8.jpg" alt="정가할인2">
+                                            <span class="discount">정가할인<span>10%</span></span> 
+                                        </div>
+
+                                        <div class="main6_sale_text">
+                                            <h3>오늘은 아무래도 카레</h3>
+                                            <span>정가 4,400원</span>
+                                            <p>3,960원</p>
+                                        </div>                                        
+                                    </div>
+                                    <div class="main6_sale_content">
+                                        <div class="main6_sale_img">
+                                            <img src="img/sale9.jpg" alt="정가할인3">
+                                            <span class="discount">정가할인<span>10%</span></span> 
+                                        </div>
+
+                                        <div class="main6_sale_text">
+                                            <h3>알쏭달쏭 캐치! 티니핑...</h3>
+                                            <span>정가 9,000원</span>
+                                            <p>8,100원</p>
+                                        </div>                                        
+                                    </div>                                    
+                                </div>                                
+                            </li>
+                            <li>
+                                <div class="main6_sale4">
+                                    <div class="main6_sale_content">
+                                        <div class="main6_sale_img">
+                                            <img src="img/sale10.jpg" alt="정가할인4">
+                                            <span class="discount">정가할인<span>10%</span></span> 
+                                        </div>
+
+                                        <div class="main6_sale_text">
+                                            <h3>예쁘고, 맛있고, 만들기...</h3>
+                                            <span>정가 3,600원</span>
+                                            <p>3,240원</p>
+                                        </div>
+                                    </div>
+                                    <div class="main6_sale_content">
+                                        <div class="main6_sale_img">
+                                            <img src="img/sale11.jpg" alt="정가할인5">
+                                            <span class="discount">정가할인<span>10%</span></span> 
+                                        </div>
+
+                                        <div class="main6_sale_text">
+                                            <h3>라뒤레 마카롱 레시피</h3>
+                                            <span>정가 10,000원</span>
+                                            <p>9,000원</p>
+                                        </div>                                        
+                                    </div>
+                                    <div class="main6_sale_content">
+                                        <div class="main6_sale_img">
+                                            <img src="img/sale12.jpg" alt="정가할인6">
+                                            <span class="discount">정가할인<span>10%</span></span> 
+                                        </div>
+
+                                        <div class="main6_sale_text">
+                                            <h3>수레바퀴 아래서: 오리...</h3>
+                                            <span>정가 3,300원</span>
+                                            <p>2,970원</p>
+                                        </div>                                        
+                                    </div>                                    
+                                </div>
+                            </li>
+                        </ul>                        
+                    </div>
+                </div>
+                <span class="sale_prev"><i class="fas fa-angle-left"></i></span>
+                <span class="sale_next"><i class="fas fa-angle-right"></i></span>
+            </div>
+        </section>
+
+        <!--main7-->
+        <section id="main7">
+            <div class="main7_title">
+                <div class="main7_title_box1">
+                    <span>서비스 & 혜택</span>
+                </div>
+                <div class="main7_title_box2">
+                    <span>공지사항 <i class="fas fa-angle-right"></i> [도서] 유료 상품 배송비 인상 안내 (2023,02,20~)</span>
+                </div>
+            </div>
+
+            <div class="main7_content">
+                <div class="main7_content_box">
+                    <span>알뜰구매 혜택</span>
+                </div>
+
+                <div class="main7_content_box">
+                    <span>핵심서비스</span>
+                </div>
+
+                <div class="main7_content_box">
+                    <span>안심배송서비스</span>
+                    <ul>
+                        <li>해외주문배송 서비스</li>
+                        <li>안심번호 서비스</li>
+                    </ul>
+                </div>
+
+                <div class="main7_content_box">
+                    <span>고객센터</span>
+                    <ul>
+                        <li>일반 문의<span class="main7_span">1577-2555</span></li>
+                        <li>eBook 문의<span>1588-2547</span></li>
+                        <li>월~금 (09:00~18:00), 토요일, 일요일, 공휴일 휴무</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </section>
+        <!--main8-->
+        <section id="main8">
+            <div class="main8_left">
+                <p>매일매일 선찬순 도서 상품권 받기! <span>이달의 혜택 모음</span></p>
+            </div>
+            <div class="main8_right">
+                <p>친구에게 상품권 선물 FLEX로 포인트 적립까지! <span>상품권 선물하기</span></p>
+            </div>
+        </section>    
+
+    <!--footer-->
+    <footer>
+        <div class="footer_wrap">
+            <div class="footer_top">
+                <ul>
+                    <li><span><a href="#">개인정보처리방침</a></span></li>
+                    <li>|</li>
+                    <li><a href="#">청소년보호정책</a></li>
+                    <li>|</li>
+                    <li><a href="#">이용약관</a></li>
+                    <li>|</li>
+                    <li><a href="#">위치기반서비스 이용약관</a></li>
+                    <li>|</li>
+                    <li><a href="#">회사소개</a></li>
+                    <li>|</li>
+                    <li><a href="#">수익배분프로그램</a></li>
+                    <li>|</li>
+                    <li><a href="#">광고안내</a></li>
+                    <li>|</li>
+                    <li><a href="#">담당자안내</a></li>
+                    <li>|</li>
+                    <li><a href="#">판매자매니저</a></li>
+                </ul>
+            </div>
+
+            <div class="footer_mid">
+                <div class="footer_mid_box1">
+                    <ul>
+                        <li class="footer_li"><a href="#">주식회사 인터파크</a></li>
+                        <li><a href="#">주소 | 서울특별시 서초구 강남대로 447(서초동, 남서울빌딩)</a></li>
+                        <li><a href="#">사업자등록번호 | 422-81-03185</a></li>
+                        <li><a href="#">호스팅서비스 제공자 | (주)인터파크커머스</a></li>
+                        <li><a href="#">대표이사 | 김양선</a></li>
+                        <li><a href="#">동신판매업신고 | 2023-서울서초-0823</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer_mid_box2">
+                    <ul>
+                        <li class="footer_li">
+                            <a href="#">고객센터
+                            <img src="img/footer_img1.gif" alt="문의전클릭"></a>
+                        </li>
+                        <li>전화 1577-2555</li>
+                        <li>팩스 02-6924-9050</li>
+                        <li>이메일 helpshop@interparkshop.com</li>
+                        <li>개인정보보호책임자 cposhopping@interparkshop.com</li>
+                        <li>개인정보보유기간 회원탈퇴시까지</li>
+                    </ul>
+                </div>
+
+                <div class="footer_mid_box3">
+                    <ul>
+                        <li class="footer_li"><a href="#">구매안전 서비스</a></li>
+                        <li>고객님은 안전거래를 위해 현금으로 5만원 이상 결제시 구매자가 보호를 받을 수 있는 구매안전 서비스를(쇼핑몰보증보험) 이용하실수 있습니다.</li>
+                        <li><img src="img/footer_img2.gif" alt="서비스 가입사실 확인"></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer_bottom">
+                <p>주식회사 인터파크커머스는 인터파크 쇼핑, 인터파크 도서의 통신판매중개자로서 통신판매의 당사자가 아니므로, 개별 판매자가 등록한 오픈마켓 상품에 대해서 주식회사 인터파크커머스는 일체 책임을 지지 않습니다.</p>
+                <span>Copyright ⓒ INTERPARK Corporation All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
